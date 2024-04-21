@@ -7,8 +7,8 @@ load_dotenv()
 RIOT_URL_LOL = os.getenv('RIOT_URL_LOL')
 RIOT_KEY_DEVELOPMENT = os.getenv('RIOT_KEY_DEVELOPMENT')
 rotation_route = "platform/v3/champion-rotations"
-CHAMPS_URL = "https://ddragon.leagueoflegends.com/cdn/14.8.1/data/en_US/champion.json"
-CHAMP_URL = "https://ddragon.leagueoflegends.com/cdn/14.8.1/data/en_US/champion/"
+CHAMPS_URL = "https://ddragon.leagueoflegends.com/cdn/14.8.1/data/pt_BR/champion.json"
+CHAMP_URL = "https://ddragon.leagueoflegends.com/cdn/14.8.1/data/pt_BR/champion/"
 
 async def get_champ_by_name(name):
     return await get_request(CHAMP_URL + name + ".json")
