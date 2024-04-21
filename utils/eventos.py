@@ -11,5 +11,5 @@ async def message_handler(message: str, client):
         test_url()
 
 
-    if message.content.lower().find('macaco') > 0 or message.content.lower() == "macaco":
-        await message.channel.send(':monkey: :monkey: :monkey: :monkey:')
+    if message.content.lower().find('bibi') > 0 or message.content.lower() == "bibi":
+        await message.channel.send(':blue_car: :blue_car: :blue_car: :blue_car:')
