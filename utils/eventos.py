@@ -1,9 +1,10 @@
 from utils.riot import test_url
 
 async def message_handler(message: str, client):
-    if message.content.lower().find('riot') or message.content.lower() == "riot":
-        test_url()
+    if "riot" in message.content.lower():
+        champs = await test_url()
+        await message.channel.send("``` \n" + champs +"\n ```")
 
 
-    if message.content.lower().find('bibi') > 0 or message.content.lower() == "bibi":
+    if "bibi" in message.content.lower():
         await message.channel.send(':blue_car: :blue_car: :blue_car: :blue_car:')
