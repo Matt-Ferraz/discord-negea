@@ -18,6 +18,12 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    if message.content and message.content[0] != "#":
+        return
+
+    if message.author == client.user:
+        return
+    
     await message_handler(message, client)
 
 
