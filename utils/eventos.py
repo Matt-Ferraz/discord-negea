@@ -22,13 +22,15 @@ async def message_handler(message: str, client):
 
         if "list" in message.content.lower():
             return await message.channel.send("In development")
-
+        
         champ_text = await get_champ_by_name(champ_name.capitalize())
-        champ_data = parse_response(champ_text)['data'][champ_name.capitalize()]
-
-        if "Access Denied" in champ_text:
+        
+        if "Access Denied" in champ_text: 
             return await message.channel.send("Champion {} not found. Get the full list by #champs list".format(champ_name.capitalize()))
 
+        champ_data = parse_response(champ_text)['data'][champ_name.capitalize()]
+
+      
         if len(message.content.split()) >= 3:
             arg = message.content.split()[2]
 
@@ -38,8 +40,9 @@ async def message_handler(message: str, client):
                 return await message.channel.send(allytips)
             
             if arg == 'passive':
-                passive = 'Nome da passiva: %s \nDescri'.format(champ_data['passive']['name'])
-
+                print(champ_data['passive']['name'], champ_data['passive']['description'])
+                passive = "Nome da passiva: " + champ_data['passive']['name'] + "\nDesc: " + champ_data['passive']['description']
+                return await message.channel.send(passive)
 
         title = champ_data['title']
         await message.channel.send(title)
