@@ -25,8 +25,10 @@ async def message_handler(message: str, client):
 
      
         champ_text = await get_champ_by_name(champ_name.capitalize())
+        
         if "Access Denied" in champ_text:
-            return await message.channel.send("Champion " + champ_name.capitalize() + " not found. Get the full list by #champs list")
+            return await message.channel.send("Champion {} not found. Get the full list by #champs list".format(champ_name.capitalize()))
+
         champ_data = parse_response(champ_text)['data'][champ_name.capitalize()]
         title = champ_data['title']
         await message.channel.send(title)
