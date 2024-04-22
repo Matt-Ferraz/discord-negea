@@ -11,4 +11,4 @@ Example:
 ?champ zac
 ```
 
-[zac.png]
+![zac](zac.png)
