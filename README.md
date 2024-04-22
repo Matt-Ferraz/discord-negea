@@ -3,6 +3,12 @@
 Negea is a general use bot
 
 available commands:
-        #riot
-        #bibi
-        #champ [name]
+?champ [name]
+
+Example:
+
+```bash
+?champ zac
+```
+
+[zac.png]
