@@ -2,7 +2,7 @@
 import discord
 import os
 from dotenv import load_dotenv
-from utils.eventos import message_handler 
+from utils.eventos import message_handler
 load_dotenv()
 
 TOKEN = os.getenv('TOKEN')
@@ -18,12 +18,12 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.content and message.content[0] != "#":
+    if message.content and message.content[0] != "?":
         return
 
     if message.author == client.user:
         return
-    
+
     await message_handler(message, client)
 
 
