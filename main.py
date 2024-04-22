@@ -2,12 +2,9 @@ import os
 from dotenv import load_dotenv
 from utils.eventos import message_handler
 from utils.client import client
-from utils.user import get_user_profile_pic
-
 load_dotenv()
 
 TOKEN = os.getenv('TOKEN')
-
 
 @client.event
 async def on_ready():
