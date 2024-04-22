@@ -8,8 +8,9 @@ from discord import Embed
 #
 
 def format_embed_champion(champ, usuario) -> Embed:
+    author_name = usuario.nick if usuario.nick is not None else usuario.name
     embed = Embed(title=champ['name'], description=champ['title'], color=0xeeeeee)
-    embed.set_author(name=usuario.nick, icon_url=usuario.avatar)
+    embed.set_author(name=author_name, icon_url=usuario.avatar)
     embed.set_thumbnail(url="https://ddragon.leagueoflegends.com/cdn/12.4.1/img/champion/" + champ['image_url'])
 
     embed.add_field(name=champ['passive_name'], value=champ['passive_desc'], inline=False)
