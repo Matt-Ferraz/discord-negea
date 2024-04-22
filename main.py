@@ -7,6 +7,8 @@ load_dotenv()
 
 TOKEN = os.getenv('TOKEN')
 
+ENABLED_ZOAS = False
+
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
@@ -21,9 +23,14 @@ async def on_message(message):
     if message.content and message.content[0] != "?":
         return
 
-    if "update-status" in message.content:
+    if "ativar-modo-zoas" in message.content:
+        ENABLED_ZOAS = True
+        return
+
+    if "update-status" in message.content and ENABLED_ZOAS is True:
         status = message.content.replace("?update-status ", '')
         await set_status(status)
+
 
     await message_handler(message, client)
 
