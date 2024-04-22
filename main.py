@@ -1,7 +1,8 @@
 import os
 from dotenv import load_dotenv
 from utils.eventos import message_handler
-from utils.client import client
+from utils.client import client, set_status
+from utils.eastereggs import easter_eggs
 load_dotenv()
 
 TOKEN = os.getenv('TOKEN')
@@ -12,15 +13,17 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    if message.author == client.user:
+        return
+
+    await easter_eggs(message)
 
     if message.content and message.content[0] != "?":
         return
 
-    if message.author == client.user:
-        return
-
-    # await get_user_profile_pic(message.author.id)
-
+    if "update-status" in message.content:
+        status = message.content.replace("?update-status ", '')
+        await set_status(status)
 
     await message_handler(message, client)
 
