@@ -1,18 +1,8 @@
+import discord
 from utils.riot import test_url, get_champ_by_name
 from utils.embed_formatters import format_embed_champion
+from utils.champ import format_champ_data
 import json
-
-def format_champ_data(raw, name):
-    print(raw)
-    formatted = {
-        'passive_name': raw['passive']['name'],
-        'passive_desc': raw['passive']['description'],
-        'title': raw['title'],
-        'name': name,
-        'image_url': raw['image']['full']
-    }
-    return formatted
-
 
 def parse_response(str: str):
     return json.loads(str)
@@ -60,4 +50,10 @@ async def message_handler(message, client):
                 return await message.channel.send(passive)
 
         embed_champ = format_embed_champion(champ_data, message.author)
-        await message.channel.send(embed=embed_champ)
+        view = discord.ui.View()
+        for spell in champ_data['spells']:
+            print(spell)
+            button = discord.ui.Button(label=spell.upper())
+            view.add_item(button)
+
+        await message.channel.send(embed=embed_champ, view=view)
