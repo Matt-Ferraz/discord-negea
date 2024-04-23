@@ -27,7 +27,7 @@ async def on_message(message):
         ENABLED_ZOAS = True
         return
 
-    if "update-status" in message.content and ENABLED_ZOAS is True:
+    if "update-status" in message.content:
         status = message.content.replace("?update-status ", '')
         await set_status(status)
 
