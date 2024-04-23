@@ -44,23 +44,23 @@ def format_spells(spells, name):
             count+=1
 
     # Printing spell information
-    for spell_name, spell_info in formated_dict.items():
-        print(f"Spell Name: {spell_name}")
-        print(f"Description: {spell_info['description']}")
-        print(f"Tooltip: {spell_info['tooltip']}")
-        print(f"Max Rank: {spell_info['max_rank']}")
-        print(f"Cooldowns: {spell_info['cooldowns']}")
-        print(f"Costs: {spell_info['costs']}")
-        print(f"Range: {spell_info['range']}")
-        print("\n")
+    # for spell_name, spell_info in formated_dict.items():
+    #     print(f"Spell Name: {spell_name}")
+    #     print(f"Description: {spell_info['description']}")
+    #     print(f"Tooltip: {spell_info['tooltip']}")
+    #     print(f"Max Rank: {spell_info['max_rank']}")
+    #     print(f"Cooldowns: {spell_info['cooldowns']}")
+    #     print(f"Costs: {spell_info['costs']}")
+    #     print(f"Range: {spell_info['range']}")
+    #     print("\n")
 
     return formated_dict
 
 def format_champ_data(raw, name):
     formatted = {
         'passive_name': raw['passive']['name'],
-        'passive_desc': raw['passive']['description'],
-        'title': raw['title'],
+        'passive_desc': strip_tags(raw['passive']['description']),
+        'title': raw['title'] + "\n",
         'name': name,
         'image_url': raw['image']['full'],
         'spells': format_spells(raw['spells'], name)
